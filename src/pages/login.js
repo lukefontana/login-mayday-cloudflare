@@ -6,9 +6,8 @@ import { faUser, faLock, faNetworkWired, faSpinner } from '@fortawesome/free-sol
 import styles from '../styles/Login.module.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-export const runtime = 'experimental-edge';
 const MySwal = withReactContent(Swal);
-
+export const runtime = 'edge';
 const Login = () => {
   const [usuario, setUsuario] = useState('');
   const [clave, setClave] = useState('');
