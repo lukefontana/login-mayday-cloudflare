@@ -1,3 +1,5 @@
+export const runtime = 'experimental-edge';
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -7,7 +9,6 @@ import styles from '../styles/Login.module.css';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
-export const runtime = 'edge';
 const Login = () => {
   const [usuario, setUsuario] = useState('');
   const [clave, setClave] = useState('');
