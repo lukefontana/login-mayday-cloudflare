@@ -1,7 +1,6 @@
 // pages/api/login.js
 import axios from 'axios';
 import qs from 'qs';
-console.log('in');
 export const runtime = 'experimental-edge';
 console.log('in 2');
 export default async function handler(req, res) {
