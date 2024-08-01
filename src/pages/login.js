@@ -64,9 +64,9 @@ const Login = () => {
         }
       });
   
-      console.log(response);
+      //console.log(response);
       const responseData = response.data;
-      console.log(axios);
+      //console.log(axios);
 
       // Parseo la respuesta
       const parser = new DOMParser();
