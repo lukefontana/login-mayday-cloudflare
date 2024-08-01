@@ -39,7 +39,7 @@ const Login = () => {
   }, []);
 
   useEffect(() => {
-    axios.post('http://webkfc.neotelecd.com/neoapi/webservice.asmx/ExecuteTask03', {
+    axios.post('webkfc.neotelecd.com/neoapi/webservice.asmx/ExecuteTask03', {
       idTask: 1,
       param1: 'bar',
       param2: 1,
