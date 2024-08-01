@@ -29,29 +29,7 @@ const Login = () => {
     fetchIp();
   }, []);
 
-  useEffect(() => {
-    axios.post('https://jsonplaceholder.typicode.com/posts', {
-      title: 'foo',
-      body: 'bar',
-      userId: 1,
-    }).then(response => console.log(response))
-      .catch(error => console.error('Error en la llamada externa:', error));
-  }, []);
-
-  useEffect(() => {
-    axios.post('/api/proxy/neoapi/webservice.asmx/ExecuteTask03', {
-      idTask: 1,
-      param1: 'bar',
-      param2: 1,
-      param3: 1,
-    } ,{
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    }).then(response => console.log(response))
-      .catch(error => console.error('Error en la llamada externa:', error));
-  }, []);
-/*
+ /*
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -142,7 +120,34 @@ const Login = () => {
         }
       });
   
-      // (El resto del código para manejar la respuesta)
+      console.log(response);
+      const responseData = response.data;
+      console.log(axios);
+
+      // Parseo la respuesta
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(responseData, "application/xml");
+      const jsonString = xmlDoc.getElementsByTagName("string")[0].childNodes[0].nodeValue;
+      const parsedResponse = JSON.parse(jsonString);
+
+      if (parsedResponse[0].Status === "true") {
+        MySwal.fire({
+          title: <strong>¡Éxito!</strong>,
+          html: <p>{parsedResponse[0].Message}</p>,
+          icon: 'success',
+          timer: 5000,
+          didClose: () => {
+            window.location.href = parsedResponse[0].Message.split(' ').pop();
+          }
+        });
+        
+      } else {
+        MySwal.fire({
+          title: <strong>Error</strong>,
+          html: <p>{parsedResponse[0].Message}</p>,
+          icon: 'error'
+        });
+      }
     } catch (error) {
       MySwal.fire({
         title: <strong>Error</strong>,
