@@ -29,62 +29,6 @@ const Login = () => {
     fetchIp();
   }, []);
 
- /*
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    const [username, userDomain] = usuario.split('@');
-
-    try {
-      const response = await axios.post('/api/proxy/neoapi/webservice.asmx/ExecuteTask03', {
-        idTask: 1,
-        param1: username, 
-        param2: clave,
-        param3: ipAddress,
-        userDomain 
-      },{
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      });
-      console.log(response);
-      const responseData = response.data;
-      console.log(axios);
-
-      // Parseo la respuesta
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(responseData, "application/xml");
-      const jsonString = xmlDoc.getElementsByTagName("string")[0].childNodes[0].nodeValue;
-      const parsedResponse = JSON.parse(jsonString);
-
-      if (parsedResponse[0].Status === "true") {
-        MySwal.fire({
-          title: <strong>¡Éxito!</strong>,
-          html: <p>{parsedResponse[0].Message}</p>,
-          icon: 'success',
-          timer: 5000,
-          didClose: () => {
-            window.location.href = parsedResponse[0].Message.split(' ').pop();
-          }
-        });
-      } else {
-        MySwal.fire({
-          title: <strong>Error</strong>,
-          html: <p>{parsedResponse[0].Message}</p>,
-          icon: 'error'
-        });
-      }
-    } catch (error) {
-      MySwal.fire({
-        title: <strong>Error</strong>,
-        html: "Error al conectar con el servidor",
-        icon: 'error'
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };*/
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -140,7 +84,7 @@ const Login = () => {
             window.location.href = parsedResponse[0].Message.split(' ').pop();
           }
         });
-        
+
       } else {
         MySwal.fire({
           title: <strong>Error</strong>,
