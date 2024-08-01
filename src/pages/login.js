@@ -29,6 +29,29 @@ const Login = () => {
     fetchIp();
   }, []);
 
+  useEffect(() => {
+    axios.post('https://jsonplaceholder.typicode.com/posts', {
+      title: 'foo',
+      body: 'bar',
+      userId: 1,
+    }).then(response => console.log(response))
+      .catch(error => console.error('Error en la llamada externa:', error));
+  }, []);
+
+  useEffect(() => {
+    axios.post('http://webkfc.neotelecd.com/neoapi/webservice.asmx/ExecuteTask03', {
+      idTask: 1,
+      param1: 'bar',
+      param2: 1,
+      param3: 1,
+    } ,{
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }).then(response => console.log(response))
+      .catch(error => console.error('Error en la llamada externa:', error));
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -36,12 +59,16 @@ const Login = () => {
     const [username, userDomain] = usuario.split('@');
 
     try {
-      const response = await axios.post('api/login', {
+      const response = await axios.post('http://webkfc.neotelecd.com/neoapi/webservice.asmx/ExecuteTask03', {
         idTask: 1,
         param1: username, 
         param2: clave,
         param3: ipAddress,
         userDomain 
+      },{
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
       });
       console.log(response);
       const responseData = response.data;
