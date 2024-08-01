@@ -43,7 +43,7 @@ const Login = () => {
         param3: ipAddress,
         userDomain 
       });
-
+      console.log(response);
       const responseData = response.data;
       console.log(axios);
 
