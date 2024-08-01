@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
   async rewrites() {
     return [
       {
@@ -7,4 +7,14 @@ module.exports = {
       }
     ];
   }
-};
+};*/
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/proxy/:path*',
+        destination: 'http://webkfc.neotelecd.com/:path*',
+      },
+    ]
+  },
+}
