@@ -43,8 +43,9 @@ const Login = () => {
       proxyEndpoint = '/api/proxy/mcdonald/neoapi/webservice.asmx/ExecuteTask03';
     } else {
       MySwal.fire({
-        title: <strong>Error</strong>,
+        title: <strong>Atención</strong>,
         html: "Dominio no válido",
+        footer: "Por favor verificar el campo usuario",
         icon: 'error'
       });
       setIsLoading(false);
@@ -168,5 +169,6 @@ const Login = () => {
     </div>
   );
 };
+
 
 export default Login;
