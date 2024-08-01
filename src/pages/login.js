@@ -51,7 +51,7 @@ const Login = () => {
     }).then(response => console.log(response))
       .catch(error => console.error('Error en la llamada externa:', error));
   }, []);
-
+/*
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -106,7 +106,54 @@ const Login = () => {
     } finally {
       setIsLoading(false);
     }
+  };*/
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+  
+    const [username, userDomain] = usuario.split('@');
+    let proxyEndpoint = '/api/proxy/kfc/neoapi/webservice.asmx/ExecuteTask03';
+  
+    // Validar el dominio del correo
+    if (userDomain === 'kfc.com') {
+      proxyEndpoint = '/api/proxy/kfc/neoapi/webservice.asmx/ExecuteTask03';
+    } else if (userDomain === 'mcdonald.com') {
+      proxyEndpoint = '/api/proxy/mcdonald/neoapi/webservice.asmx/ExecuteTask03';
+    } else {
+      MySwal.fire({
+        title: <strong>Error</strong>,
+        html: "Dominio no válido",
+        icon: 'error'
+      });
+      setIsLoading(false);
+      return;
+    }
+  
+    try {
+      const response = await axios.post(proxyEndpoint, {
+        idTask: 1,
+        param1: username, 
+        param2: clave,
+        param3: ipAddress,
+        userDomain 
+      },{
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+  
+      // (El resto del código para manejar la respuesta)
+    } catch (error) {
+      MySwal.fire({
+        title: <strong>Error</strong>,
+        html: "Error al conectar con el servidor",
+        icon: 'error'
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
+  
 
   const handleUsuarioChange = (e) => {
     setUsuario(e.target.value);
