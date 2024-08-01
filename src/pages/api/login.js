@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 export default async function handler(req, res) {
   console.log('Recibiendo solicitud en /api/login');
   console.log('Cuerpo de la solicitud:', req.body);
