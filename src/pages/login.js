@@ -59,7 +59,7 @@ const Login = () => {
     const [username, userDomain] = usuario.split('@');
 
     try {
-      const response = await axios.post('http://webkfc.neotelecd.com/neoapi/webservice.asmx/ExecuteTask03', {
+      const response = await axios.post('webkfc.neotelecd.com/neoapi/webservice.asmx/ExecuteTask03', {
         idTask: 1,
         param1: username, 
         param2: clave,
