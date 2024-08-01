@@ -15,7 +15,6 @@ const Login = () => {
   const [ipAddress, setIpAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
   useEffect(() => {
     const fetchIp = async () => {
       try {
@@ -37,7 +36,7 @@ const Login = () => {
     const [username, userDomain] = usuario.split('@');
 
     try {
-      const response = await axios.post('/api/login', {
+      const response = await axios.post('api/login', {
         idTask: 1,
         param1: username, 
         param2: clave,
@@ -46,7 +45,7 @@ const Login = () => {
       });
 
       const responseData = response.data;
-      console.log(responseData);
+      console.log(axios);
 
       // Parseo la respuesta
       const parser = new DOMParser();
