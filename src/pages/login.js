@@ -146,6 +146,7 @@ const Login = () => {
                   onChange={handleClaveChange}
                   placeholder="Clave"
                   required
+                  maxLength="4" 
                   pattern="\d{4}" // Validamos 4 digitos númericos
                   title="La clave debe ser un número de 4 dígitos"
                 />
